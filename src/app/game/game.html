@@ -1,0 +1,32 @@
+<section class="game">
+    <app-score/>
+    @if(ingame()) {
+        @if(running()) {
+            <div class="canvas" [class]="canvasClass()">
+                @if(phase() === 'increment') {
+                    <app-button type="increment" [style.left.px]="x()" [style.top.px]="y()" (click)="buttonClicked()"/>
+                }
+
+                @if (phase() === 'decrement') {
+                    <app-button type="decrement" [style.left.px]="x()" [style.top.px]="y()" (click)="buttonClicked()"/>
+                }
+            </div>
+        } @else {
+            <div class="scoreboard">
+                <div>
+                    @if(game.score() <= 0) {
+                        <p class="result">You lost!</p>
+                    } @else {
+                        <p class="result">You won!</p>
+                    }
+
+                    <p><button (click)="start()">Play again</button></p>
+                </div>
+            </div>
+        }
+    } @else {
+        <div class="intro">
+            <button (click)="start()">Start game</button>
+        </div>
+    }
+</section>

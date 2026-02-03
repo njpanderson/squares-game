@@ -1,0 +1,77 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    background-color: lightblue;
+    border: 2px solid blue;
+}
+
+.intro {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+
+    > button {
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+}
+
+.canvas {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.scoreboard {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+
+    p {
+        margin: 0;
+        text-align: center;
+    }
+
+    .result {
+        width: 100%;
+        font-size: 40px;
+    }
+}
+
+.canvas::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.canvas.incremented::before {
+    background-color: green; /* Green when incremented */
+    opacity: 1; /* Make visible immediately */
+    animation: fadeOut 0.5s forwards; /* Trigger fade-out animation */
+}
+
+.canvas.decremented::before {
+    background-color: red; /* Red when decremented */
+    opacity: 1; /* Make visible immediately */
+    animation: fadeOut 0.5s forwards; /* Trigger fade-out animation */
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /* Start fully opaque */
+    }
+    100% {
+        opacity: 0; /* End fully transparent */
+    }
+}

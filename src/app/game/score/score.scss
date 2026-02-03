@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+    height: 19px;
+    padding: 5px;
+    flex-grow: 0;
+    border-bottom: 1px solid purple;
+    background-color: pink;
+
+    .score > * {
+        margin-left: .5rem;
+        font-size: 16px;
+    }
+}
